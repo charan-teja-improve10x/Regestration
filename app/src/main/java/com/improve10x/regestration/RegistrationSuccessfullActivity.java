@@ -57,5 +57,7 @@ public class RegistrationSuccessfullActivity extends AppCompatActivity {
         stateTxt.setText(state);
         TextView countryTxt = findViewById(R.id.country_txt);
         countryTxt.setText(country);
+        TextView dateOfBirthTxt = findViewById(R.id.date_of_birth_txt);
+        dateOfBirthTxt.setText(dateOfBirth);
     }
 }

@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class AddressActivity extends AppCompatActivity {
@@ -15,11 +16,7 @@ public class AddressActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_address);
         Intent intent = getIntent();
-        String email = intent.getStringExtra("Email");
-        String userName = intent.getStringExtra("User Name");
-        String firstName = intent.getStringExtra("First Name");
-        String lastName = intent.getStringExtra("Last Name");
-        Toast.makeText(this, email + " ; " + userName + " ; " + firstName + " ; " + lastName, Toast.LENGTH_SHORT).show();
+       Bundle bundle = intent.getExtras();
         Button backBtn = findViewById(R.id.back_btn);
         backBtn.setOnClickListener(v -> {
            finish();
@@ -42,10 +39,7 @@ public class AddressActivity extends AppCompatActivity {
             String state = stateTxt.getText().toString();
             String country = countryTxt.getText().toString();
             Intent birthDetailsIntent = new Intent(this, BirthDetailsActivity.class);
-            birthDetailsIntent.putExtra("Email", email);
-            birthDetailsIntent.putExtra("User Name", userName);
-            birthDetailsIntent.putExtra("First Name", firstName);
-            birthDetailsIntent.putExtra("Last Name", lastName);
+            birthDetailsIntent.putExtras(bundle);
             birthDetailsIntent.putExtra("House No.", houseNumber);
             birthDetailsIntent.putExtra("Street", street);
             birthDetailsIntent.putExtra("City", city);

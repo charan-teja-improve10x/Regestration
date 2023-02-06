@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class PersonalInfoActivity extends AppCompatActivity {
@@ -15,8 +16,7 @@ public class PersonalInfoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_personal_info);
         Intent intent = getIntent();
-        String email = intent.getStringExtra("Email");
-        Toast.makeText(this, email, Toast.LENGTH_SHORT).show();
+        Bundle bundle = intent.getExtras();
         Button backBtn = findViewById(R.id.back_btn);
         backBtn.setOnClickListener(v -> {
            finish();
@@ -33,7 +33,7 @@ public class PersonalInfoActivity extends AppCompatActivity {
             String firstName = firstNameTxt.getText().toString();
             String lastName = lastNameTxt.getText().toString();
             Intent addressIntent = new Intent(this, AddressActivity.class);
-            addressIntent.putExtra("Email", email);
+            addressIntent.putExtras(bundle);
             addressIntent.putExtra("User Name", userName);
             addressIntent.putExtra("First Name", firstName);
             addressIntent.putExtra("Last Name", lastName);
