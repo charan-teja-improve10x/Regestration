@@ -1,9 +1,14 @@
 package com.improve10x.regestration;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -15,6 +20,9 @@ public class IdentityActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_identity);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle("Identity");
+        actionBar.setDisplayHomeAsUpEnabled(true);
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
 
@@ -37,5 +45,21 @@ public class IdentityActivity extends AppCompatActivity {
             successIntent.putExtra("aadharNo.", aadharNumber);
             startActivity(successIntent);
         });
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == android.R.id.home){
+            Toast.makeText(this, "pothunnaaaa", Toast.LENGTH_LONG).show();
+            finish();
+        }
+        return true;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.identity_menu,menu);
+        return true;
     }
 }
